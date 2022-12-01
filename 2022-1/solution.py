@@ -17,23 +17,15 @@ def getCaloriesPerElf(lines):
 
     return elfs_calories
 
-def getMaxCalories(lines):
-    calories_per_elf = getCaloriesPerElf(lines)
-    return calories_per_elf[0];
-
-def getCaloriesOfTopThree(lines):
-    calories_per_elf = getCaloriesPerElf(lines)
-    calories_of_top_three = 0;
-
-    for i in range(3):
-        calories_of_top_three += calories_per_elf[i]
-    return calories_of_top_three;
-
 def main():
     input = open(INPUT_FILE, "r")
     lines = input.readlines()
 
-    print("Elf with most calories has " + str(getMaxCalories(lines)) + " calories.\n")
-    print("Top 3 elfs with most calories have " + str(getCaloriesOfTopThree(lines)) + " calories in total.") 
+    calories_per_elf = getCaloriesPerElf(lines)
+    max_calories = calories_per_elf[0]
+    calories_of_top_three = sum(calories_per_elf[0:3])
+
+    print("Elf with most calories has " + str(max_calories) + " calories.")
+    print("Top 3 elfs with most calories have " + str(calories_of_top_three) + " calories in total.") 
 
 main()
