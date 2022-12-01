@@ -2,27 +2,27 @@ INPUT_FILE="input.txt"
 
 def getCaloriesPerElf(lines):
     elfs_calories = []
-    currentElfCalories = 0
+    current_elf_calories = 0
 
     for l in lines:    
         l = l.strip()
         if len(l) > 0:
-            currentElfCalories += int(l)
+            current_elf_calories += int(l)
         else:
-            elfs_calories.append(currentElfCalories)
-            currentElfCalories = 0;
+            elfs_calories.append(current_elf_calories)
+            current_elf_calories = 0;
 
-    elfs_calories.append(currentElfCalories)
+    elfs_calories.append(current_elf_calories)
     elfs_calories.sort(reverse=True)
 
     return elfs_calories
 
 def getMaxCalories(lines):
-    calories_per_elf=getCaloriesPerElf(lines)
+    calories_per_elf = getCaloriesPerElf(lines)
     return calories_per_elf[0];
 
 def getCaloriesOfTopThree(lines):
-    calories_per_elf=getCaloriesPerElf(lines)
+    calories_per_elf = getCaloriesPerElf(lines)
     calories_of_top_three = 0;
 
     for i in range(3):
