@@ -24,10 +24,14 @@ def get_my_round_score_part_1(round_choices):
     me = round_choices[1]
 
     my_score = 0
-    if (opponent in rock and me in rock) or (opponent in scissors and me in scissors) or (opponent in paper and me in paper):
+    if ((opponent in rock and me in rock) or
+        (opponent in scissors and me in scissors) or
+        (opponent in paper and me in paper)):
         my_score += ROUND_SCORES['DRAW']
 
-    elif (opponent in rock and me in paper) or (opponent in scissors and me in rock) or (opponent in paper and me in scissors):
+    elif ((opponent in rock and me in paper) or
+            (opponent in scissors and me in rock) or
+            (opponent in paper and me in scissors)):
         my_score += ROUND_SCORES['WIN']
 
     my_score += scores[me]
