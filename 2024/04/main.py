@@ -8,6 +8,8 @@ def read_input(file_input):
 
     return lines
 
+# PART 1
+
 def get_matrix(lines):
     matrix = []
     for l in lines:
@@ -97,6 +99,25 @@ def get_diagonals_count(lines):
 
     return get_horizontal_count(diagonals)
 
+# PART 2
+
+def get_x_mas_count(lines):
+    matrix = get_matrix(lines)
+    x_max_count = 0
+
+    for row in range(1, len(matrix)-1):
+        for col in range(1, len(matrix[0])-1):
+            if matrix[row][col] == 'A':
+                diagonal_1 = ''.join([matrix[row-1][col-1], 'A', matrix[row+1][col+1]])
+                diagonal_2 = ''.join([matrix[row-1][col+1], 'A', matrix[row+1][col-1]])
+
+                if (diagonal_1 == 'MAS' or diagonal_1 == 'SAM') and \
+                    (diagonal_2 == 'MAS' or diagonal_2 == 'SAM'):
+                    x_max_count += 1
+
+    return x_max_count
+
+
 def main():
     lines = read_input('./input/input')
 
@@ -105,6 +126,9 @@ def main():
     diagonals_count = get_diagonals_count(lines)
 
     total_count = horizontal_count + vertical_count + diagonals_count
-    print(total_count)
+    print(f"Total count of XMAS: {total_count}")
+
+    x_mas_count = get_x_mas_count(lines)
+    print(f"Total count of X-MAS: {x_mas_count}")
 
 main()
